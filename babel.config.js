@@ -20,6 +20,8 @@ module.exports = function (api) {
             '.web.js',
             '.web.jsx',
             '.web.tsx',
+            'json',
+            'cjs',
           ],
           root: ['./src'],
         },

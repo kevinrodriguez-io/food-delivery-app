@@ -9,11 +9,17 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@emotion/native": "^11.0.0-next.17",
+    "@emotion/react": "^11.0.0-next.10",
+    "@expo-google-fonts/poppins": "^0.1.0",
+    "@kevinrodriguez-io/pigment-core": "^1.3.1",
     "expo": "~38.0.8",
+    "expo-font": "~8.2.1",
     "expo-status-bar": "^1.0.2",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
+    "react-native-svg": "12.1.0",
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
