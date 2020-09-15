@@ -5,7 +5,7 @@ import { Shop } from './Icons/Shop'
 
 export const BottomBar: React.FC = () => {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row',  }}>
       <View style={{ flex: 1 }}></View>
       <View style={{ flex: 1 }}></View>
       <View style={{ flex: 1 }}></View>

@@ -1,7 +1,5 @@
 import React from 'react'
 import { TouchableOpacity, View, Text, Image, FlatList } from 'react-native'
-import { TopBar } from 'components/TopBar'
-import { useTheme } from '@emotion/react'
 import styled from '@emotion/native'
 import { Category, CategoryName } from 'types/Category'
 import { categories } from 'lib/categories'

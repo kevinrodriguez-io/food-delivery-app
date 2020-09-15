@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/native'
-import { BoxShadow } from 'components/AndroidShadowContainer/BoxShadow'
+import { BoxShadow } from 'components/AndroidShadow/BoxShadow'
 import { FlatList, Platform, View, Text } from 'react-native'
 import { HeaderContainer, Title } from '../Sections'
 import { CardLikeButton } from 'components/CardLikeButton'

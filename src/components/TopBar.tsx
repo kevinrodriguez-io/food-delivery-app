@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import styled from '@emotion/native'
-import { BoxShadow } from './AndroidShadowContainer/BoxShadow'
+import { BoxShadow } from './AndroidShadow/BoxShadow'
 import { SearchIcon } from './Icons/SearchIcon'
 import { useTheme } from '@emotion/react'
 import { NotificationIcon } from './Icons/NotificationIcon'

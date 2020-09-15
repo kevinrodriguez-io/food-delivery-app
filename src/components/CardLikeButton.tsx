@@ -9,7 +9,11 @@ export const LikeButtonContainer = styled.TouchableOpacity({
   zIndex: 1,
 })
 
-export const CardLikeButton: React.FC<{ isLiked: boolean }> = ({ isLiked }) => {
+export type CardLikeButtonProps = {
+  isLiked: boolean
+}
+
+export const CardLikeButton: React.FC<CardLikeButtonProps> = ({ isLiked }) => {
   return (
     <LikeButtonContainer>
       {isLiked ? <HeartFull /> : <HeartEmpty />}

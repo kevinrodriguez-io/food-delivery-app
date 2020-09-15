@@ -8,27 +8,7 @@ import Svg, {
   RadialGradient,
   Path,
 } from 'react-native-svg'
-
-function colorRgb(color: string) {
-  const reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/
-  let sColor = color.toLowerCase()
-  let rgb = []
-  if (sColor && reg.test(sColor)) {
-    if (sColor.length === 4) {
-      let sColorNew = '#'
-      for (let i = 1; i < 4; i += 1) {
-        sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1))
-      }
-      sColor = sColorNew
-    }
-    for (let i = 1; i < 7; i += 2) {
-      rgb.push(parseInt('0x' + sColor.slice(i, i + 2)))
-    }
-    return rgb
-  } else {
-    throw Error('Invalid Color!')
-  }
-}
+import { ColorUtils } from '@kevinrodriguez-io/pigment-core'
 
 export type BoxShadowProps = {
   settings: {
@@ -45,7 +25,6 @@ export type BoxShadowProps = {
 }
 
 export const BoxShadow: React.FC<BoxShadowProps> = ({ settings, children }) => {
-  //get the shadow settings and give them default values
   const {
     width = 0,
     height = 0,
@@ -56,64 +35,63 @@ export const BoxShadow: React.FC<BoxShadowProps> = ({ settings, children }) => {
     x = 0,
     y = 0,
     style = {},
-  } = settings //define the lengths
+  } = settings
 
   const lineWidth = border,
     rectWidth = width - radius * 2,
-    rectHeight = height - radius * 2 //update 2017-03-04
-  //format the color
+    rectHeight = height - radius * 2
 
-  let rgb = colorRgb(color) //the same parts for gradients
+  const { r, g, b } = ColorUtils.HEXtoRGB(color)
 
-  const linear = (key: string) => {
+  const renderLinear = (key: string) => {
     return [
       <Stop
         offset="0"
         stopColor={color}
         stopOpacity={opacity}
-        key={key + 'Linear0'}
+        key={`${key}Linear0`}
       />,
       <Stop
         offset="1"
         stopColor={color}
         stopOpacity="0"
-        key={key + 'Linear1'}
+        key={`${key}Linear1`}
       />,
     ]
   }
 
-  const radial = (key: string) => {
+  const renderRadial = (key: string) => {
     return [
       <Stop
         offset="0"
         stopColor={color}
         stopOpacity={opacity}
-        key={key + 'Radial0'}
+        key={`${key}Radial0`}
       />,
       <Stop
         offset={(radius / (lineWidth + radius)).toString()}
         stopColor={color}
         stopOpacity={opacity}
-        key={key + 'Radial1'}
+        key={`${key}Radial1`}
       />,
       <Stop
         offset="1"
         stopColor={color}
         stopOpacity="0"
-        key={key + 'Radial2'}
+        key={`${key}Radial2`}
       />,
     ]
   }
 
-  const outerWidth = lineWidth + radius //return a view ,whose background is a svg picture
+  const outerWidth = lineWidth + radius
 
   return (
     <View
       style={[
         {
           position: 'relative',
-          width: width,
-          height: height,
+          width,
+          height,
         },
         style,
       ]}
@@ -129,16 +107,16 @@ export const BoxShadow: React.FC<BoxShadowProps> = ({ settings, children }) => {
       >
         <Defs>
           <LinearGradient id="top" x1="0%" x2="0%" y1="100%" y2="0%">
-            {linear('BoxTop')}
+            {renderLinear('BoxTop')}
           </LinearGradient>
           <LinearGradient id="bottom" x1="0%" x2="0%" y1="0%" y2="100%">
-            {linear('BoxBottom')}
+            {renderLinear('BoxBottom')}
           </LinearGradient>
           <LinearGradient id="left" x1="100%" y1="0%" x2="0%" y2="0%">
-            {linear('BoxLeft')}
+            {renderLinear('BoxLeft')}
           </LinearGradient>
           <LinearGradient id="right" x1="0%" y1="0%" x2="100%" y2="0%">
-            {linear('BoxRight')}
+            {renderLinear('BoxRight')}
           </LinearGradient>
 
           <RadialGradient
@@ -149,7 +127,7 @@ export const BoxShadow: React.FC<BoxShadowProps> = ({ settings, children }) => {
             fx="100%"
             fy="100%"
           >
-            {radial('BoxLeftTop')}
+            {renderRadial('BoxLeftTop')}
           </RadialGradient>
           <RadialGradient
             id="border-left-bottom"
@@ -159,7 +137,7 @@ export const BoxShadow: React.FC<BoxShadowProps> = ({ settings, children }) => {
             fx="100%"
             fy="0%"
           >
-            {radial('BoxLeftBottom')}
+            {renderRadial('BoxLeftBottom')}
           </RadialGradient>
           <RadialGradient
             id="border-right-top"
@@ -169,7 +147,7 @@ export const BoxShadow: React.FC<BoxShadowProps> = ({ settings, children }) => {
             fx="0%"
             fy="100%"
           >
-            {radial('BoxRightTop')}
+            {renderRadial('BoxRightTop')}
           </RadialGradient>
           <RadialGradient
             id="border-right-bottom"
@@ -179,7 +157,7 @@ export const BoxShadow: React.FC<BoxShadowProps> = ({ settings, children }) => {
             fx="0%"
             fy="0%"
           >
-            {radial('BoxRightBottom')}
+            {renderRadial('BoxRightBottom')}
           </RadialGradient>
         </Defs>
 
@@ -234,10 +212,9 @@ export const BoxShadow: React.FC<BoxShadowProps> = ({ settings, children }) => {
           height={lineWidth}
           fill="url(#bottom)"
         />
-
         <Path
           d={`M ${outerWidth} ${lineWidth},h ${rectWidth},q ${radius} 0 ${radius} ${radius},v ${rectHeight},q 0 ${radius} -${radius} ${radius},h -${rectWidth},q -${radius} 0 -${radius} -${radius},v -${rectHeight},q 0 -${radius} ${radius} -${radius}`}
-          fill={`rgba(${rgb[0]},${rgb[1]},${rgb[2]},${opacity || 1})`}
+          fill={`rgba(${r},${g},${b},${opacity || 1})`}
         />
       </Svg>
       {children}

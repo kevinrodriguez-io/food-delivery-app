@@ -2,8 +2,7 @@ import React from 'react'
 import { Platform, View, Image, FlatList } from 'react-native'
 import styled from '@emotion/native'
 import { HeaderContainer, Title } from 'components/Sections'
-import { BoxShadow } from 'components/AndroidShadowContainer/BoxShadow'
-import { HeartEmpty, HeartFull } from 'components/Icons/Heart'
+import { BoxShadow } from 'components/AndroidShadow/BoxShadow'
 import { ArrowRight } from 'components/Icons/ArrowRight'
 import { CardLikeButton } from 'components/CardLikeButton'
 import {
@@ -228,7 +227,7 @@ const foods = [
   },
 ]
 
-export const PopularProductsSlider = () => {
+export const PopularProductsSlider: React.FC = () => {
   return (
     <Container>
       <PopularProductsSliderHeaderContainer>
