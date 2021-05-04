@@ -1,6 +1,4 @@
-import { Theme } from '@emotion/react'
-
-export const theme: Theme = {
+export const theme = {
   colors: {
     primary: '#5117AC',
     secondary: '#20D0C4',
@@ -11,7 +9,7 @@ export const theme: Theme = {
     textSecondary: '#707070',
     textAlternative: '#515F65',
     textMuted: '#CFCFCF',
-    generalBorder: '#E2EDF2'
+    generalBorder: '#E2EDF2',
   },
   fonts: {
     poppins: {
@@ -21,4 +19,6 @@ export const theme: Theme = {
       light: 'Poppins_300Light',
     },
   },
-}
+} as const
+
+export type AppTheme = typeof theme

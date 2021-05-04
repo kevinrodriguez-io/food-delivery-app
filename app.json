@@ -1,12 +1,14 @@
 {
   "expo": {
-    "name": "delivery-app",
-    "slug": "delivery-app",
+    "name": "Food-Delivery-App",
+    "slug": "food-delivery-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "packagerOpts": {
-      "sourceExts": ["cjs"]
+      "sourceExts": [
+        "cjs"
+      ]
     },
     "splash": {
       "image": "./src/assets/splash.png",
@@ -16,12 +18,16 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Food Delivery App Dashboard",
+    "githubUrl": "https://github.com/kevinrodriguez-io/food-delivery-app"
   }
 }

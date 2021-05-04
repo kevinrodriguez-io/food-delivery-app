@@ -8,22 +8,24 @@ import { PopularProductsSlider } from 'components/Home/PopularProductsSlider'
 import { RecommendationsSlider } from 'components/Home/RecommendationsSlider'
 import { BottomBar } from 'components/BottomBar'
 
-const FlexOneContainer = styled.View({
-  flex: 1,
-})
-
 export const HomeScreen: React.FC = () => {
   return (
     <>
       <FlexOneContainer>
         <TopBar />
-        <FlexOneContainer>
+        <TopContainer>
           <CategoriesSlider />
           <PopularProductsSlider />
           <RecommendationsSlider />
-        </FlexOneContainer>
+        </TopContainer>
       </FlexOneContainer>
       <BottomBar />
     </>
   )
 }
+
+const FlexOneContainer = styled.View({
+  flex: 1,
+})
+
+const TopContainer = styled.ScrollView({})

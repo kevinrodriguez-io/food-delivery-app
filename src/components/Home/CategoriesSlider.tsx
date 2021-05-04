@@ -106,9 +106,9 @@ export const CategoriesSlider = () => {
   return (
     <Container>
       <HeaderContainer>
-        <Title>Explorar categorias</Title>
+        <Title>Explore Categories</Title>
         <TouchableOpacity>
-          <CategoriesSliderCTAText>Ver todos</CategoriesSliderCTAText>
+          <CategoriesSliderCTAText>View all</CategoriesSliderCTAText>
         </TouchableOpacity>
       </HeaderContainer>
       <FlatList

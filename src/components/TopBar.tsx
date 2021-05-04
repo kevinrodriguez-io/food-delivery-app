@@ -15,6 +15,35 @@ import { useTheme } from '@emotion/react'
 import { NotificationIcon } from './Icons/NotificationIcon'
 import { DiscountIcon } from './Icons/DiscountIcon'
 
+export const TopBar: React.FC = () => {
+  return (
+    <ShadowContainer>
+      <TopBarSafeAreaView>
+        <TopBarContainer>
+          <SearchBoxContainer>
+            <SearchIconContainer>
+              <SearchIcon />
+            </SearchIconContainer>
+            <TopBarSearchBox placeholder="Search" />
+          </SearchBoxContainer>
+          <TitleContainer>
+            <Title>Foods</Title>
+          </TitleContainer>
+          <IconsContainer>
+            <TouchableOpacity>
+              <NotificationIcon />
+            </TouchableOpacity>
+            <IconsGap />
+            <TouchableOpacity>
+              <DiscountIcon />
+            </TouchableOpacity>
+          </IconsContainer>
+        </TopBarContainer>
+      </TopBarSafeAreaView>
+    </ShadowContainer>
+  )
+}
+
 const IOSShadowContainer = styled.View({
   height: 130,
   padding: 20,
@@ -130,32 +159,3 @@ const TopBarContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 })
-
-export const TopBar: React.FC = () => {
-  return (
-    <ShadowContainer>
-      <TopBarSafeAreaView>
-        <TopBarContainer>
-          <SearchBoxContainer>
-            <SearchIconContainer>
-              <SearchIcon />
-            </SearchIconContainer>
-            <TopBarSearchBox placeholder="Buscar" />
-          </SearchBoxContainer>
-          <TitleContainer>
-            <Title>Inicio</Title>
-          </TitleContainer>
-          <IconsContainer>
-            <TouchableOpacity>
-              <NotificationIcon />
-            </TouchableOpacity>
-            <IconsGap />
-            <TouchableOpacity>
-              <DiscountIcon />
-            </TouchableOpacity>
-          </IconsContainer>
-        </TopBarContainer>
-      </TopBarSafeAreaView>
-    </ShadowContainer>
-  )
-}

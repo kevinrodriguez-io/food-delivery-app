@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform, View, Image, FlatList } from 'react-native'
+import { Platform, View, Image, FlatList, StyleSheet } from 'react-native'
 import styled from '@emotion/native'
 import { HeaderContainer, Title } from 'components/Sections'
 import { BoxShadow } from 'components/AndroidShadow/BoxShadow'
@@ -206,22 +206,22 @@ const PopularProductsSliderHeaderContainer = styled(HeaderContainer)({
 const foods = [
   {
     image: require('assets/pizza.png'),
-    title: 'Pizza Clásica',
-    subTitle: 'Salsa clásica de la casa',
+    title: 'Classic Pizza',
+    subTitle: 'House classical sauce',
     price: 12.58,
     isLiked: false,
   },
   {
     image: require('assets/burger.png'),
-    title: 'Hamburguesa mix',
-    subTitle: 'Doble carne con queso',
+    title: 'Mix Burger',
+    subTitle: 'Double Cheese',
     price: 15.21,
     isLiked: true,
   },
   {
     image: require('assets/pizza.png'),
-    title: 'Pizza Thin Crust',
-    subTitle: 'Borde delgado',
+    title: 'Thin Crust Pizza',
+    subTitle: 'Almost borderless',
     price: 11.99,
     isLiked: true,
   },
@@ -231,16 +231,11 @@ export const PopularProductsSlider: React.FC = () => {
   return (
     <Container>
       <PopularProductsSliderHeaderContainer>
-        <Title>Productos populares</Title>
+        <Title>Popular Products</Title>
       </PopularProductsSliderHeaderContainer>
       <FlatList
         data={foods}
-        contentContainerStyle={{
-          paddingHorizontal: 20,
-          paddingTop: 20,
-          paddingBottom: 40,
-          zIndex: 10,
-        }}
+        contentContainerStyle={flatListStyles.container}
         horizontal
         keyExtractor={e => e.title}
         showsHorizontalScrollIndicator={false}
@@ -252,3 +247,12 @@ export const PopularProductsSlider: React.FC = () => {
     </Container>
   )
 }
+
+const flatListStyles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 40,
+    zIndex: 10,
+  },
+})

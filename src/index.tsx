@@ -2,7 +2,7 @@ import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { ThemeProvider } from '@emotion/react'
 import { theme } from 'theme'
-import { AppLoading } from 'expo'
+import AppLoading from 'expo-app-loading'
 import {
   useFonts,
   Poppins_600SemiBold,

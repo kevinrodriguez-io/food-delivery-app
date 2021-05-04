@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/native'
 import { BoxShadow } from 'components/AndroidShadow/BoxShadow'
-import { FlatList, Platform, View, Text } from 'react-native'
+import { FlatList, Platform, View, Text, StyleSheet } from 'react-native'
 import { HeaderContainer, Title } from '../Sections'
 import { CardLikeButton } from 'components/CardLikeButton'
 import {
@@ -105,16 +105,16 @@ const foods = [
   {
     category: 'Natural',
     image: require('assets/tropicalDrinks.png'),
-    title: 'Malteadas tropicales',
-    subTitle: 'Elaborado con jugos naturales',
+    title: 'Tropical Beverages',
+    subTitle: 'With natural juice',
     price: 8.36,
     isLiked: true,
   },
   {
     category: 'Natural',
     image: require('assets/naturalDrinks.png'),
-    title: 'Malteadas de Verano',
-    subTitle: 'Elaborado con jugos caseros',
+    title: 'Summer Drinks',
+    subTitle: 'Home Flavours',
     price: 7.22,
     isLiked: true,
   },
@@ -124,16 +124,11 @@ export const RecommendationsSlider: React.FC = () => {
   return (
     <View>
       <RecommendationSliderHeader>
-        <Title>Recomendados</Title>
+        <Title>Recommended</Title>
       </RecommendationSliderHeader>
       <FlatList
         data={foods}
-        contentContainerStyle={{
-          paddingHorizontal: 20,
-          paddingTop: 20,
-          paddingBottom: 40,
-          zIndex: 10,
-        }}
+        contentContainerStyle={flatListStyles.container}
         horizontal
         keyExtractor={e => e.title}
         showsHorizontalScrollIndicator={false}
@@ -145,3 +140,12 @@ export const RecommendationsSlider: React.FC = () => {
     </View>
   )
 }
+
+const flatListStyles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 40,
+    zIndex: 10,
+  },
+})
